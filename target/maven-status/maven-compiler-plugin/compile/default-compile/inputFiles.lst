@@ -1,0 +1,11 @@
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/model/Playlist.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/command/NewPlaylistCommand.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/command/FrontCommand.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/command/DeletePlaylistCommand.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/model/Song.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/command/SetAttributeCommand.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/model/User.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/FrontController.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/Servlet.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/command/UnknownCommand.java
+/home/raullozanoponce/NetBeansProjects/ArelpiMusic/src/main/java/es/ulpgc/as/rlp/controller/UserInitializerDispatcher.java

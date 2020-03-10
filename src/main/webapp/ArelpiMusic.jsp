@@ -1,3 +1,4 @@
+<%@page import="es.ulpgc.as.rlp.model.Playlist"%>
 <%@page import="es.ulpgc.as.rlp.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +19,31 @@
             <input type="submit" value="Contáctanos">
         </form>
         <h4>Listas de reproducción:</h4>
-        <jsp:useBean id="user" type="es.ulpgc.as.rlp.model.User" scope="session" />
-        <% for (int i = 0; i < user.getPlaylists().size(); i++) { %>
-            <p>- <%= user.getPlaylists().get(i).getName() %>
-        <% } %>
+        <table style="width:100%">
+            <tr>
+                <th>Nombre Playlist</th>
+                <th>Número de Canciones</th>
+                <th>Borrar Playlist</th>
+            </tr>
+            <jsp:useBean id="user" type="es.ulpgc.as.rlp.model.User" scope="session" />
+            <% for (int i = 0; i < user.getPlaylists().size(); i++) { %>
+                <% Playlist playlist = user.getPlaylists().get(i); %>
+                <tr>
+                    <td>
+                        <form action="PlaylistView.jsp">
+                            <input type="submit" name="playlistName" value="<%=playlist.getName()%>">
+                        </form>
+                    </td>
+                    <td><%= playlist.getSongs().size() %></td>
+                    <td>
+                        <form action="FrontController">
+                            <input type="hidden" name="command" value="DeletePlaylistCommand">
+                            <input type="hidden" name="playlistName" value="<%=playlist.getName()%>">
+                            <input type="submit" name="playlistName" value="Borrar">
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
     </body>
 </html>

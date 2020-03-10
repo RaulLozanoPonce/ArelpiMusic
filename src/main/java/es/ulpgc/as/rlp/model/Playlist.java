@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Playlist {
     
-    private String name;
-    private List<String> songs;
+    private final String name;
+    private final List<Song> songs;
 
     public Playlist(String name) {
         this.name = name;
@@ -15,5 +15,9 @@ public class Playlist {
 
     public String getName() {
         return name;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
     }
 }
