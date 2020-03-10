@@ -17,8 +17,8 @@ public class AddSongCommand extends FrontCommand {
         User user = (User) session.getAttribute("user");
         
         Song song = Songs.getSongByName(request.getParameter("songName"));
-        Playlist playlist = request.getParameter("playlistName");
-        playlist.getSongs().add(song);
+        //Playlist playlist = request.getParameter("playlistName");
+        //playlist.getSongs().add(song);
         session.setAttribute("user", user);
         
         forward("/NewSong.jsp");

@@ -12,11 +12,11 @@ public class Songs {
     
     static {
         songList = new ArrayList<>();
-        songList.add(new Song("Boulevard Of Broken Dreams", "Green Day", "Rock", "song.mp3"));
+        songList.add(new Song(1, "Boulevard Of Broken Dreams", "Green Day", "Rock", "song.mp3"));
     }
     
     public static List<Song> getSongs(Playlist playlist) {
-        return songList.stream().filter(song -> !playlist.getSongs().contains(song)).collect(Collectors.toList());
+        return songList;
     }
 
     public static Song getSongByName(String name) {

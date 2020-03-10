@@ -25,13 +25,14 @@
                 <th>Número de Canciones</th>
                 <th>Borrar Playlist</th>
             </tr>
-            <jsp:useBean id="user" type="es.ulpgc.as.rlp.model.User" scope="session" />
-            <% for (int i = 0; i < user.getPlaylists().size(); i++) { %>
-                <% Playlist playlist = user.getPlaylists().get(i); %>
+            <% User user = (User) session.getAttribute("user");
+            for (int i = 0; i < user.getPlaylists().size(); i++) {
+                Playlist playlist = user.getPlaylists().get(i); %>
                 <tr>
                     <td>
                         <form action="PlaylistView.jsp">
-                            <input type="submit" name="playlistName" value="<%=playlist.getName()%>">
+                            <input type="hidden" name="playlistName" value="<%=playlist.getName()%>">
+                            <input type="submit" value="<%=playlist.getName()%>">
                         </form>
                     </td>
                     <td><%= playlist.getSongs().size() %></td>
@@ -39,7 +40,7 @@
                         <form action="FrontController">
                             <input type="hidden" name="command" value="DeletePlaylistCommand">
                             <input type="hidden" name="playlistName" value="<%=playlist.getName()%>">
-                            <input type="submit" name="playlistName" value="Borrar">
+                            <input type="submit" value="Borrar">
                         </form>
                     </td>
                 </tr>

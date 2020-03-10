@@ -1,0 +1,13 @@
+es\ulpgc\as\rlp\controller\command\AddSongCommand.class
+es\ulpgc\as\rlp\controller\UserInitializerDispatcher.class
+es\ulpgc\as\rlp\controller\command\FrontCommand.class
+es\ulpgc\as\rlp\controller\FrontController.class
+es\ulpgc\as\rlp\model\Song.class
+es\ulpgc\as\rlp\model\Playlist.class
+es\ulpgc\as\rlp\controller\command\UnknownCommand.class
+es\ulpgc\as\rlp\Songs.class
+es\ulpgc\as\rlp\controller\UserController.class
+es\ulpgc\as\rlp\controller\command\DeletePlaylistCommand.class
+es\ulpgc\as\rlp\controller\command\NewPlaylistCommand.class
+es\ulpgc\as\rlp\controller\Servlet.class
+es\ulpgc\as\rlp\model\User.class

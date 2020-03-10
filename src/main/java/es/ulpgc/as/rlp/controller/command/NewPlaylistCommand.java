@@ -1,5 +1,6 @@
 package es.ulpgc.as.rlp.controller.command;
 
+import es.ulpgc.as.rlp.controller.UserController;
 import es.ulpgc.as.rlp.controller.UserInitializerDispatcher;
 import es.ulpgc.as.rlp.model.Playlist;
 import es.ulpgc.as.rlp.model.User;
@@ -13,10 +14,11 @@ public class NewPlaylistCommand extends FrontCommand {
         
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        Playlist playlist = new Playlist(request.getParameter("playlistName"));
-        user.getPlaylists().add(playlist);
-        session.setAttribute("user", user);
         
-        forward("/ArelpiMusic.jsp");
+        Playlist playlistWithConflicts = new UserController(user).getPlaylistWithName(request.getParameter("playlistName"));
+        if(playlistWithConflicts == null) user.getPlaylists().add(new Playlist(request.getParameter("playlistName")));
+        
+        session.setAttribute("user", user);
+        forward2("/ArelpiMusic.jsp");
     }
 }

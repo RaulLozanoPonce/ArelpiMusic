@@ -1,5 +1,8 @@
 <%@page import="es.ulpgc.as.rlp.model.Song"%>
 <%@page import="es.ulpgc.as.rlp.Songs"%>
+<%@page import="es.ulpgc.as.rlp.model.Playlist"%>
+<%@page import="es.ulpgc.as.rlp.controller.UserController"%>
+<%@page import="es.ulpgc.as.rlp.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,22 +13,15 @@
     <body>
         <h1>Añade una canción a tu lista!</h1>
         <table style="width:100%">
-            <tr>
-                <th>Nombre Canción</th>
-                <th>Artista/s</th>
-                <th>Añadir Canción</th>
-            </tr>
-            <jsp:useBean id="playlist" type="es.ulpgc.as.rlp.model.Playlist" scope="session" />
-            <% for (int i = 0; i < Songs.getSongs(playlist).size(); i++) { %>
-                <% Song song = Songs.getSongs(playlist).get(i); %>
+            <% UserController userController = new UserController((User) session.getAttribute("user"));
+            Playlist playlist = userController.getPlaylistWithName(request.getParameter("playlistName"));
+            for (Song song : Songs.getSongs(playlist)) {%>
                 <tr>
-                    <td><%=song.getName()%></td>
-                    <td><%=song.getArtist()%></td>
                     <td>
                         <form action="FrontController">
                             <input type="hidden" name="command" value="AddSongCommand">
-                            <input type="hidden" name="songName" value="<%=song.getName()%>">
-                            <input type="submit" value="Añadir">
+                            <input type="hidden" name="songId" value="<%=song.getId()%>">
+                            <input type="submit" value="<%=song.getName()%>">
                         </form>
                     </td>
                 </tr>

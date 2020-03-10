@@ -30,6 +30,14 @@ public abstract class FrontCommand {
             }
         } catch (ServletException | IOException ex) {}
     }
+    
+    protected void forward2(String target) {
+        if(context != null) {
+            try {
+                response.sendRedirect(request.getContextPath() + target);
+            } catch (IOException ex) {}
+        }
+    }
 
     public void andProcessIt() {
         process();

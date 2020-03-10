@@ -1,3 +1,6 @@
+<%@page import="es.ulpgc.as.rlp.controller.UserController"%>
+<%@page import="es.ulpgc.as.rlp.model.Playlist"%>
+<%@page import="es.ulpgc.as.rlp.model.User"%>
 <%@page import="es.ulpgc.as.rlp.model.Song"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +12,7 @@
     <body>
         <h1>ArelpiMusic</h1>
         <form action="NewSong.jsp">
+            <input type="hidden" value="<%=request.getParameter("playlistName")%>">
             <input type="submit" value="Añadir Canción">
         </form>
         <h4><%=request.getParameter("playlistName")%>:</h4>
@@ -19,23 +23,25 @@
                 <th>Artista/s</th>
                 <th>Borrar Canción</th>
             </tr>
-            <jsp:useBean id="playlist" type="es.ulpgc.as.rlp.model.Playlist" scope="session" />
-            <% for (int i = 0; i < playlist.getSongs().size(); i++) { %>
-                <% Song song = playlist.getSongs().get(i); %>
+            <% UserController userController = new UserController((User) session.getAttribute("user"));
+            Playlist playlist = userController.getPlaylistWithName(request.getParameter("playlistName"));
+            for (int i = 0; i < playlist.getSongs().size(); i++) {
+                Song song = playlist.getSongs().get(i); %>
                 <tr>
                     <td>
                         <form action="SongView.jsp">
-                            <input type="hidden" name="songName" value="<%=song.getName()%>">
+                            <input type="hidden" name="songId" value="<%=song.getId()%>">
                             <input type="submit" value="Reproducir">
                         </form>
                     </td>
                     <td><%=song.getName()%></td>
                     <td><%=song.getArtist()%></td>
+                    <td><%=song.getGenre()%></td>
                     <td>
                         <form action="FrontController">
                             <input type="hidden" name="command" value="DeleteSongCommand">
-                            <input type="hidden" name="songName" value="<%=song.getName()%>">
-                            <input type="submit" name="songName" value="Borrar">
+                            <input type="hidden" name="playlistName" value="<%=song.getId()%>">
+                            <input type="submit" value="Borrar">
                         </form>
                     </td>
                 </tr>
